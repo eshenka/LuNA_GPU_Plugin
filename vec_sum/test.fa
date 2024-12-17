@@ -1,0 +1,36 @@
+import c_sum_elem(value, value, name, int) as sum_elem;
+import c_iprint(value, int, int) as iprint;
+import c_init(name, int, int) as init;
+
+
+sub initialize(name elem, int val, int cnt)
+{
+  cf c: init(elem, val, cnt);
+}
+
+sub sum_vectors(name first, name second, name result) 
+{
+    for j=1..2 {
+      sum_elem(first[j], second[j], result[j], 10);
+  }
+}
+
+sub display(name vec)
+{
+    for j=1..2 {
+      iprint(vec[j], 10, (j - 1) *10);
+    }
+}
+
+sub main()
+{
+  df vec_a, vec_b, vec_c;
+
+    for j=1..2 {
+      initialize(vec_a[j], 10, 10);
+      initialize(vec_b[j], 5, 10);
+  }
+
+  cf a: sum_vectors(vec_a, vec_b, vec_c);
+  cf b: display(vec_c);
+}

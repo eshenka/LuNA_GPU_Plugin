@@ -1,0 +1,30 @@
+#include "ucenv.h"
+#include <cstdio>
+
+extern "C" {
+
+void c_init(OutputDF &df, int val, int count) {
+  int *vec = df.create<int>(count);
+  for (int i = 0; i < count; i++) {
+    vec[i] = val;
+  }
+}
+
+void c_iprint(InputDF &vec, int count, int idx) {
+  int *vector = vec.getData<int>();
+  for (int i = 0; i < count; i++) {
+    printf("idx: %d elem: %d\n", idx + i, vector[i]);
+  }
+}
+
+void c_sum_elem(const InputDF &first, const InputDF &second, OutputDF &result,
+                int count) {
+  int *res = result.create<int>(count);
+  const int *f = first.getData<int>();
+  const int *s = second.getData<int>();
+
+  for (int i = 0; i < count; i++) {
+    res[i] = f[i] + s[i];
+  }
+}
+}
